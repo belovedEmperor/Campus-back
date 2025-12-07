@@ -39,7 +39,7 @@ API Endpoints (RESTful Routes)
 ### Application Architecture Description and Diagram
 
 ### Epics, User Stories, and Acceptance Criteria
-**Epic: Campus Management**
+#### **Epic: Campus Management**
 1.  **View All Campuses**
     *   *User Story:* As a user, I want to see all campuses so I can browse the university network.
     *   *Backend Task:* Create `GET /api/campuses` to return an array of all campus objects.
@@ -55,7 +55,8 @@ API Endpoints (RESTful Routes)
 5.  **Delete Campus**
     *   *User Story:* As an user, I want to remove a campus that no longer exists.
     *   *Backend Task:* Create `DELETE /api/campuses/:id`. Ensure associated students become "unascribed" (campusId = null) rather than being deleted.
-**Epic: Student Management**
+
+#### **Epic: Student Management**
 6.  **View All Students**
     *   *User Story:* As a user, I want to see a list of all students registered in the system.
     *   *Backend Task:* Create `GET /api/students` to return an array of all student objects.
