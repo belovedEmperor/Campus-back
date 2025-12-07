@@ -1,3 +1,85 @@
+# Campus-back
+<!-- [Link to deployed page](https://belovedemperor.github.io/Bank-of-React/) -->
+
+Team Members: Cheng Yue (username: CY343), Christopher Altamirano (username: caltam600), and Jason Huang (username: belovedEmperor)
+
+## Documentation
+### Feature Requirements
+Database Schema & Models
+*   **Campus Model**
+    *   **`name`**: String, Not Null, Not Empty.
+    *   **`imageUrl`**: String, Default value required (use a placeholder URL).
+    *   **`address`**: String, Not Null, Not Empty.
+    *   **`description`**: Text (Large String), Description can be large.
+*   **Student Model**
+    *   **`firstName`**: String, Not Null, Not Empty.
+    *   **`lastName`**: String, Not Null, Not Empty.
+    *   **`email`**: String, Not Null, Not Empty.
+    *   **`imageUrl`**: String, Default value required.
+    *   **`gpa`**: Decimal, Range: 0.0 - 4.0.
+*   **Associations**
+    *   **One-to-Many**: A Campus can have many Students.
+    *   **Belongs-To**: A Student belongs to at most one Campus.
+    *   *Constraint:* If a Campus is deleted, its students should **not** be deleted (their `campusId` should become `null`).
+
+API Endpoints (RESTful Routes)
+- **Campuses (`/api/campuses`)**
+    *   `GET /` : Fetch all campuses.
+    *   `GET /:id` : Fetch a single campus **including** its list of enrolled students.
+    *   `POST /` : Create a new campus.
+    *   `PUT /:id` : Update an existing campus.
+    *   `DELETE /:id` : Delete a campus.
+- **Students (`/api/students`)**
+    *   `GET /` : Fetch all students.
+    *   `GET /:id` : Fetch a single student **including** their associated campus.
+    *   `POST /` : Create a new student.
+    *   `PUT /:id` : Update an existing student.
+    *   `DELETE /:id` : Delete a student.
+
+### Application Architecture Description and Diagram
+
+### Epics, User Stories, and Acceptance Criteria
+#### **Epic: Campus Management**
+1.  **View All Campuses**
+    *   *User Story:* As a user, I want to see all campuses so I can browse the university network.
+    *   *Backend Task:* Create `GET /api/campuses` to return an array of all campus objects.
+2.  **View Single Campus**
+    *   *User Story:* As a user, I want to see details about a specific campus and who goes there.
+    *   *Backend Task:* Create `GET /api/campuses/:id` that returns the campus metadata AND an array of associated `students`.
+3.  **Add Campus**
+    *   *User Story:* As an user, I want to add a new campus to the system.
+    *   *Backend Task:* Create `POST /api/campuses` that accepts `name`, `address`, etc., validates they aren't empty, and saves to DB.
+4.  **Edit Campus**
+    *   *User Story:* As an user, I want to update campus details (like address or description).
+    *   *Backend Task:* Create `PUT /api/campuses/:id` to update the attributes of a specific campus.
+5.  **Delete Campus**
+    *   *User Story:* As an user, I want to remove a campus that no longer exists.
+    *   *Backend Task:* Create `DELETE /api/campuses/:id`. Ensure associated students become "unascribed" (campusId = null) rather than being deleted.
+
+#### **Epic: Student Management**
+6.  **View All Students**
+    *   *User Story:* As a user, I want to see a list of all students registered in the system.
+    *   *Backend Task:* Create `GET /api/students` to return an array of all student objects.
+7.  **View Single Student**
+    *   *User Story:* As a user, I want to view a student's profile, including their GPA and which campus they attend.
+    *   *Backend Task:* Create `GET /api/students/:id` that returns student info AND the associated `campus` object.
+8.  **Add Student**
+    *   *User Story:* As an user, I want to enroll a new student.
+    *   *Backend Task:* Create `POST /api/students` that accepts student details. It should strictly validate that `gpa` is between 0.0 and 4.0.
+9.  **Edit Student**
+    *   *User Story:* As an user, I want to update a student's information or transfer them to a different campus.
+    *   *Backend Task:* Create `PUT /api/students/:id`. This endpoint must handle updating standard fields (email, gpa) AND foreign keys (`campusId`).
+10. **Delete Student**
+    *   *User Story:* As an user, I want to remove a student who has left the university.
+    *   *Backend Task:* Create `DELETE /api/students/:id` to remove the student record permanently.
+
+### Project Schedule
+<!-- [Github Project/Gantt Chart Link](https://github.com/users/belovedEmperor/projects/4) -->
+<!---->
+<!-- ![[CSci 395 - Project 3 - Bank of React-1762211427111.webp]] -->
+
+***
+
 # server-starter-code
 
 This repository is the server (back-end) starter code for Final Project - Full-Stack CRUD Application.
