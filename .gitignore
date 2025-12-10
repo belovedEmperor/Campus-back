@@ -1,1 +1,5 @@
 Session.vim
+node_modules/
+.pgdata/
+.direnv/
+logfile
