@@ -7,6 +7,7 @@ const Sequelize = require('sequelize');  // Import Sequelize
 const db = require('../db');  // Import Sequelize database instance called "db"
 
 // Define the campus model
+const { Model, DataTypes } = require('sequelize');
 const Campus = db.define("campus", {
   name: {
     type: Sequelize.STRING,
@@ -20,7 +21,15 @@ const Campus = db.define("campus", {
 
   description: {
     type: Sequelize.STRING,
+  },
+
+  imageUrl: {
+    type: DataTypes.TEXT,
+    allowNull: true,   // ← this is required for null/default
+    defaultValue: null // optional, but good practice
   }
+
+
 });
 
 // Export the campus model
