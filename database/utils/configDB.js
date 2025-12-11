@@ -1,15 +1,14 @@
 /*==================================================
 /database/utils/configDB.js
 
-Configuration for local PostgreSQL connection.
+It declares and exports the variables for database name, username, and password.
 ==================================================*/
+// Declare the variables for database name, username, and password.
+const dbName = 'starter-server';
+const dbUser = 'postgres';
+const dbPwd = 'postgres';  // Note: If needed, change this password to match the password created for PostgreSQL database on the local machine.
 
-// Set local database name and credentials
-const dbName = 'campus_db';         // The database you just created
-const dbUser = 'postgres';          // Your Postgres username
-const dbPwd = 'Chris2004!';  // Replace with the password you used in psql
-
-// Export variables
+// Export the variables 
 module.exports = {
   dbName,
   dbUser,
